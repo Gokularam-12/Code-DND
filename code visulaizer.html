@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeDNA – Code Pattern Visualizer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1c1c1c, #2d2d2d);
+      color: #f1f1f1;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      font-family: monospace;
+      font-size: 1rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #333;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    }
+    canvas {
+      display: block;
+      margin: 2rem auto;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    }
+    select, button {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #555;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover, select:hover {
+      background-color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h1>CodeDNA – Code Pattern Visualizer</h1>
+  <textarea id="codeInput" placeholder="Paste your code here..."></textarea>
+  <select id="language">
+    <option value="js">JavaScript</option>
+    <option value="py">Python</option>
+    <option value="cpp">C++</option>
+  </select>
+  <button onclick="visualizeCode()">Visualize</button>
+  <canvas id="visualCanvas" width="800" height="400"></canvas>
+
+  <script>
+    function visualizeCode() {
+      const code = document.getElementById('codeInput').value;
+      const language = document.getElementById('language').value;
+      const canvas = document.getElementById('visualCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const lines = code.split('\n');
+      let x = 50, y = 50;
+
+      lines.forEach((line, index) => {
+        const trimmed = line.trim();
+
+        if ((language === 'js' && (trimmed.startsWith('for') || trimmed.startsWith('while'))) ||
+            (language === 'py' && (trimmed.startsWith('for') || trimmed.startsWith('while'))) ||
+            (language === 'cpp' && (trimmed.startsWith('for') || trimmed.startsWith('while')))) {
+          ctx.beginPath();
+          ctx.arc(x, y, 20, 0, 2 * Math.PI);
+          ctx.fillStyle = '#4caf50';
+          ctx.fill();
+          ctx.fillStyle = '#fff';
+          ctx.fillText('Loop', x - 15, y + 40);
+          y += 80;
+        } else if ((language === 'js' && (trimmed.startsWith('if') || trimmed.startsWith('else'))) ||
+                   (language === 'py' && (trimmed.startsWith('if') || trimmed.startsWith('elif') || trimmed.startsWith('else'))) ||
+                   (language === 'cpp' && (trimmed.startsWith('if') || trimmed.startsWith('else')))) {
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + 40, y);
+          ctx.lineTo(x + 20, y + 30);
+          ctx.closePath();
+          ctx.fillStyle = '#2196f3';
+          ctx.fill();
+          ctx.fillStyle = '#fff';
+          ctx.fillText('Branch', x - 10, y + 50);
+          y += 80;
+        } else if (trimmed.includes('=') && !trimmed.includes('==')) {
+          ctx.fillStyle = '#ff9800';
+          ctx.fillRect(x, y, 60, 30);
+          ctx.fillStyle = '#fff';
+          ctx.fillText('Var', x + 10, y + 20);
+          y += 80;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
