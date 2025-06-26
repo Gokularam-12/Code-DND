@@ -1,30 +1,18 @@
- CodeDNA – Code Pattern Visualizer 
+# 🧬 CodeDNA – Drag-and-Drop Prompt Builder
 
-CodeDNA is a frontend web application that allows users to paste code snippets in various programming languages (JavaScript, Python, and C++) and visualize core structures like loops, conditionals, and variable assignments.
+**CodeDNA** is a developer-focused drag-and-drop interface for assembling structured code prompts visually. It simplifies the process of constructing complex prompts for code generation or educational tools.
 
- Features
+🔗 **Live Demo**: [Click here](https://gokularam-12.github.io/Code-DND/)
 
--  Detects patterns like `for`, `while`, `if/else`, and assignments
--  Visualizes each structure as a unique shape (loop = circle, condition = triangle, variable = block)
--  Dark theme with black & gray styling
--  Supports JavaScript, Python, and C++
--  Frontend-only project (no backend or database required)
+## 🚀 Features
 
- How to Use
+- 🧲 Drag-and-drop blocks to build code prompts
+- 🔍 Live preview of the constructed prompt
+- 🔤 Simple UI for editing and rearranging blocks
+- 💾 Option to copy or export the final prompt
+- 🎯 100% client-side — no backend or login needed
 
-1. Paste your code in the text area
-2. Select the programming language
-3. Click **Visualize**
-4. View the graphic representation of your code on canvas
+## 🛠️ Tech Stack
 
- Tech Stack
-
-- HTML, CSS
-- JavaScript (Vanilla)
-- `<canvas>` API for graphics rendering
-
- Project Structure
-
-```bash
 📁 CodeDNA-Visualizer
  ┣ 📄 index.html   # All code in one HTML file
