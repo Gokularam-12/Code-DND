@@ -1,4 +1,4 @@
- CodeDNA – Code Pattern Visualizer Demo:[ https://gokularam-12.github.io/Code-DND/](url)
+ CodeDNA – Code Pattern Visualizer 
 
 CodeDNA is a frontend web application that allows users to paste code snippets in various programming languages (JavaScript, Python, and C++) and visualize core structures like loops, conditionals, and variable assignments.
 
